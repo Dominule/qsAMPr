@@ -1,3 +1,4 @@
 pandas
 rdkit
 scikit-learn
+matplotlib
