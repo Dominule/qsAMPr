@@ -10,7 +10,7 @@ Create a dataframe with molecular descriptors for a list of peptides
 
 
 # Read the positive peptides from the CSV file, generate negative peptides
-df_peptides = pd.read_csv('../data/examples_AMPSphere/peptides.csv', delimiter=';')
+df_peptides = pd.read_csv('../../data/examples_AMPSphere/peptides.csv', delimiter=';')
 list_of_positives = df_peptides['peptide'].tolist()
 list_of_negatives = get_peptides()
 
