@@ -14,7 +14,7 @@ positive_df = pd.read_csv("../data/examples_DBAASP/positive_peptides_without_mod
 descriptors_list_list = []
 for i in range(positive_df.shape[0]):
     peptide = peptides.Peptide(positive_df.iloc[i,0])
-    descriptors_list_list.append(peptide.pcp_descriptors())
+    descriptors_list_list.append(peptide.descriptors())
 descriptors_positives_df = pd.DataFrame(descriptors_list_list)
 
 

@@ -14,14 +14,14 @@ with open("../data/examples_DBAASP/raw_dbaasp_staphylococcus_without_modificatio
         peptide_MIC_values.append(row[6])
 
 # for model training create csv from sequences and MIC values
-output_csv = "../data/examples_DBAASP/positive_peptides.csv"
+output_csv = "../data/examples_DBAASP/positive_peptides_without_modifications.csv"
 with open(output_csv, "w") as file:
     writer = csv.writer(file, delimiter=",")
     for i in range(len(peptide_sequences)):
         writer.writerow([peptide_sequences[i], peptide_MIC_values[i]])
 
 # for exploration analysis create fasta from sequences
-output_fasta = "../data/examples_DBAASP/AMP_sequences_staphylococcus_DBAASP.fasta"
+output_fasta = "../data/examples_DBAASP/sequences_staphylococcus_DBAASP.fasta"
 with open (output_fasta, "w") as file:
     for i in range(len(peptide_sequences)):
         if i == 0:
