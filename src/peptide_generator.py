@@ -18,4 +18,4 @@ def get_peptides(number_of_sequencies):
         print(peptide)
     return peptides
 
-get_peptides(10)
+# TODO: store the generated peptides in a file

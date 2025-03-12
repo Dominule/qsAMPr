@@ -5,7 +5,7 @@ AMPSphere --> fasta for exploration analysis
 """
 
 peptide_sequences = []
-with open("../data/examples_AMPSphere/AMP_peptides_100.csv") as file:
+with open("../../data/examples_AMPSphere/AMP_peptides_100.csv") as file:
     reader = csv.reader(file, delimiter=";")
     for row in reader:
         peptide_sequences.append(row[1])

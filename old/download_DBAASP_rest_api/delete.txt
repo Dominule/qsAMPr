@@ -1,0 +1,29 @@
+Jak získat negativní data - možnosti:
+
+1) vygenerovat náhodné sekvence (stejná pravděpodobnost aa)
+    - ANO
+
+2) vygenerovat náhodná idčka (jiná než pozitivní)
+    - možná online json nebude fungovat
+
+3) stáhnout DBAASP všechny sekvence a vyfiltrovat idčka
+    - stáhne se, načte se pak v kódu? - asi jo
+
+4) stáhnout DBAASP náhodné sekvence a vyfiltrovat idčka
+    - jaké náhodné?
+
+5) kouknout, jestli někde není negativní dataset
+
+6) stáhnout negativní 246 z AntiTB a odfiltrovat stafylokoka --> pak stačí už nají jenom cca 200 z DBAASP
+
+
+
+po stažení idček:
+--> kontrola, jestli mají hodnoty u stafylokoka
+
+
+
+# natrénovat model
+
+
+# otagovat ampsphere -
