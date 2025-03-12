@@ -1,6 +1,6 @@
 import requests
 import json
-from csv_reader import get_peptide_ids
+from negative_peptides_ids import get_peptide_ids
 
 """
 Download json data from DBAASP database using REST API

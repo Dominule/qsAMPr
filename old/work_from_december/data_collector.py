@@ -1,7 +1,7 @@
 import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Descriptors
-from peptide_generator import get_peptides
+from src.peptide_generator import get_peptides
 
 
 '''
