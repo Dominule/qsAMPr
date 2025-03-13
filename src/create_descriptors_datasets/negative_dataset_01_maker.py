@@ -18,7 +18,7 @@ print(negative_fir_df.shape)
 print(negative_sec_df.shape)
 
 # keep random 200 sequences from negative_sec_df --> together cca 500 sequences, set the activity
-negative_sec_df = negative_sec_df.sample(n=180, random_state=42)
+negative_sec_df = negative_sec_df.sample(n=157, random_state=42)
 negative_fir_df.columns = ['SEQUENCE', 'ACTIVITY']
 negative_sec_df.columns = ['SEQUENCE']
 max_activity = negative_fir_df["ACTIVITY"].max()

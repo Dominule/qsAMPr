@@ -9,7 +9,7 @@ Create negative dataset -03- random generated sequences
 
 path_store = "../../data/inputs/descriptors_negative_03_dataset.csv"
 new_activity = 10000
-number_of_peptides_generated = 443
+number_of_peptides_generated = 442
 
 # Generate peptides
 negative_list = peptide_generator.get_peptides(number_of_peptides_generated)
