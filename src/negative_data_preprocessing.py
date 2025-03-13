@@ -2,7 +2,7 @@ import peptides
 import pandas as pd
 import peptide_generator
 
-# with open("../data/examples_negative_SwissProt/negative_peptides") as f:
+# with open("../data/samples_negative_SwissProt/negative_peptides") as f:
 #     # readlines without \n
 #     negative_peptides = f.read().splitlines()
 # print(negative_peptides[:5])
