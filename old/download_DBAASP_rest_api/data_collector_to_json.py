@@ -1,6 +1,6 @@
 import requests
 import json
-from negative_peptides_ids import get_peptide_ids
+from data_loader import get_positive_ids
 
 """
 Download json data from DBAASP database using REST API
@@ -19,5 +19,5 @@ for amp_id in amp_id_list:
 
 #print(f"List of jsons: {json_list}")
 
-with open('../data/examples_DBAASP/raw_data_from_DBAASP.json', 'w') as f:
+with open('../data/samples_DBAASP/raw_data_staphylococcus_from_DBAASP.json', 'w') as f:
     json.dump(json_list, f)

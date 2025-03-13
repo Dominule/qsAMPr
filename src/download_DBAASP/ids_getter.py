@@ -1,11 +1,13 @@
 from random import randint
 import csv
-def get_peptides_ids():
-    negative_ids = []
-    positive_ids = []
 
-    # fill positive_ids
-    with open("../../data/examples_DBAASP/raw_dbaasp_staphylococcus_without_modifications.csv") as file:
+"""
+Get positive or negative ids from DBAASP data
+"""
+
+def get_positive_ids():
+    positive_ids = []
+    with open("../../data/samples_DBAASP/raw_dbaasp_staphylococcus_without_modifications.csv") as file:
         reader = csv.reader(file, delimiter=",")
         for row in reader:
             if row[0] == "ID":
@@ -13,6 +15,12 @@ def get_peptides_ids():
             positive_ids.append(int(row[0]))
         positive_ids.sort()
         print("done with positives, len:\t" + str(len(positive_ids)))
+    return positive_ids
+
+
+def get_random_ids():
+    negative_ids = []
+    positive_ids = get_positive_ids()
 
 
     # fill negative_ids
@@ -39,6 +47,24 @@ def get_peptides_ids():
     return negative_ids
 
 
-get_peptides_ids()
-print("done with everything")
+def get_raw(path):
+    ids = []
+    with open(path) as file:
+        reader = csv.reader(file, delimiter=",")
+        for row in reader:
+            if row[0] == "ID":
+                continue
+            ids.append(int(row[0]))
+        ids.sort()
+    return ids
 
+
+def get_gram_negative_ids():
+    # return difference between gram negative and gram positive lists
+    gram_negative_list = get_raw("../../old/data_old/ids_gram_negative_bacteria.csv")
+    gram_positive_list = get_raw("../../old/data_old/ids_gram_positive_bacteria.csv")
+
+    for id in gram_positive_list:
+        if id in gram_negative_list:
+            gram_negative_list.remove(id)
+    return gram_negative_list

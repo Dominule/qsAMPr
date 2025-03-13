@@ -17,5 +17,3 @@ def get_peptides(number_of_sequencies):
         peptides.append(peptide)
         print(peptide)
     return peptides
-
-# TODO: store the generated peptides in a file

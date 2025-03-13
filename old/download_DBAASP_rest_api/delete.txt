@@ -26,4 +26,4 @@ po stažení idček:
 # natrénovat model
 
 
-# otagovat ampsphere -
+# otagovat ampsphere

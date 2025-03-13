@@ -8,7 +8,7 @@ Compute probability of each aminoacid and store dataframe
 def get_data():
     # load sequences
     sequences = []
-    positive_df = pd.read_csv("../data/examples_DBAASP/positive_peptides_without_modifications.csv")
+    positive_df = pd.read_csv("../data/samples_DBAASP/positive_peptides_without_modifications.csv")
     for i in range(positive_df.shape[0]):
         sequences.append(positive_df.iloc[i,0])
     return sequences

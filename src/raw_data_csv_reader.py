@@ -7,21 +7,21 @@ Create a csv file with just the peptide sequences
 
 peptide_sequences = []
 peptide_MIC_values = []
-with open("../data/examples_DBAASP/raw_dbaasp_staphylococcus_without_modifications.csv") as file:
+with open("../data/samples_DBAASP/raw_dbaasp_staphylococcus_without_modifications.csv") as file:
     reader = csv.reader(file, delimiter=",")
     for row in reader:
         peptide_sequences.append(row[4])
         peptide_MIC_values.append(row[6])
 
 # for model training create csv from sequences and MIC values
-output_csv = "../data/examples_DBAASP/positive_peptides_without_modifications.csv"
+output_csv = "../data/samples_DBAASP/positive_peptides_without_modifications.csv"
 with open(output_csv, "w") as file:
     writer = csv.writer(file, delimiter=",")
     for i in range(len(peptide_sequences)):
         writer.writerow([peptide_sequences[i], peptide_MIC_values[i]])
 
 # for exploration analysis create fasta from sequences
-output_fasta = "../data/examples_DBAASP/sequences_staphylococcus_DBAASP.fasta"
+output_fasta = "../data/samples_DBAASP/sequences_staphylococcus_DBAASP.fasta"
 with open (output_fasta, "w") as file:
     for i in range(len(peptide_sequences)):
         if i == 0:

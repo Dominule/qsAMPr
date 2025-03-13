@@ -2,7 +2,7 @@ import peptides
 import pandas as pd
 import peptide_generator
 
-# with open("../data/examples_random_peptides_SwissProt/negative_peptides") as f:
+# with open("../data/examples_negative_SwissProt/negative_peptides") as f:
 #     # readlines without \n
 #     negative_peptides = f.read().splitlines()
 # print(negative_peptides[:5])
@@ -15,4 +15,4 @@ for i in range(len(negative_peptides)):
     decsriptors_list_list.append(peptide.descriptors())
 descriptors_negatives_df = pd.DataFrame(decsriptors_list_list)
 
-descriptors_negatives_df.to_csv("../data/examples_negative_generated/descriptors_negative_generated_100.csv", index=False)
+descriptors_negatives_df.to_csv("../data/samples_negative_generated/descriptors_negative_generated_100.csv", index=False)

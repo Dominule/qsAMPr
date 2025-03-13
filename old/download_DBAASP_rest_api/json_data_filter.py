@@ -2,12 +2,12 @@ import json
 from integer_getter_from_range import get_float
 
 """
-Filter json raw data to get only the necessary information
+Filter json raw data to get only the necessary information,
 """
 
 bacteria = "Staphylococcus aureus"      # target bacteria
 method = "MIC"          # Minimal Inhibitory Concentration
-with open('../data/examples_DBAASP/raw_data_from_DBAASP.json') as f:
+with open('../data/samples_DBAASP/raw_data_staphylococcus_from_DBAASP.json') as f:
     raw = json.load(f)  # list of json dicts
 
 
