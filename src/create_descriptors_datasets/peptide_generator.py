@@ -1,6 +1,10 @@
-# Generate 100 sequences of length from 12 to 56 AA
 import random
 import aminoacid_probability
+
+"""
+Generate random peptides with the same amino acid distribution as the positive dataset
+"""
+
 
 minLength = aminoacid_probability.get_min_length()
 maxLength = aminoacid_probability.get_max_length()

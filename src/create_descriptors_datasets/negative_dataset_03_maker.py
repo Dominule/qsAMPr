@@ -1,21 +1,23 @@
 import pandas as pd
 import peptides
+import peptide_generator
 
 """
-Create negative dataset -02- random real sequences (UniProt from AntiTbPred)
+Create negative dataset -03- random generated sequences
+(with the same amino acid distribution as the positive dataset)
 """
 
-path_source = "../../data/samples_negative_SwissProt/negative_peptides"
-path_store = "../../data/inputs/descriptors_negative_02_dataset.csv"
+path_store = "../../data/inputs/descriptors_negative_03_dataset.csv"
 new_activity = 10000
+number_of_peptides_generated = 443
 
-# Load peptides_staphylococcus_active.csv
-negative_df = pd.read_csv(path_source)
+# Generate peptides
+negative_list = peptide_generator.get_peptides(number_of_peptides_generated)
 
 # Create a DataFrame of lists with the descriptors for each peptide
 descriptors_list_list = []
-for i in range(negative_df.shape[0]):
-    sequence = negative_df.iloc[i,0]
+for i in range(len(negative_list)):
+    sequence = negative_list[i]
     activity = new_activity
     # create row
     row_dict = {"SEQUENCE": sequence}
