@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
+
 def train_and_evaluate_mlp(data, target_column="ACTIVITY", test_size=0.2, random_state=42):
     """
     Trains and evaluates a Multi-layer Perceptron (MLP) classifier on a balanced dataset.
@@ -32,11 +33,10 @@ def train_and_evaluate_mlp(data, target_column="ACTIVITY", test_size=0.2, random
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
-
     # Build the MLP classifier model
     model = MLPClassifier(hidden_layer_sizes=(128, 64), activation='relu', solver='adam',
                           alpha=0.0001, batch_size='auto', learning_rate='adaptive',
-                          max_iter=500, random_state=random_state) #Increased max_iter
+                          max_iter=500, random_state=random_state)  # Increased max_iter
 
     # Train the model
     model.fit(X_train, y_train)
@@ -48,22 +48,24 @@ def train_and_evaluate_mlp(data, target_column="ACTIVITY", test_size=0.2, random
     report = classification_report(y_test, y_pred)
     confusion = confusion_matrix(y_test, y_pred)
 
-    return model, accuracy, report, confusion, scaler #Return scaler for future predictions
+    return model, accuracy, report, confusion, scaler  # Return scaler for future predictions
 
-# Example usage (replace 'your_data.csv' with your actual data file)
-try:
-    data_pos = pd.read_csv('../../data/inputs/clf_descriptors_positive_staphylococcus.csv')
-    data_neg = pd.read_csv('../../data/inputs/clf_descriptors_negative_02_dataset.csv')
-    data = pd.concat([data_pos, data_neg])
-    data = data.drop(columns=['SEQUENCE'])
-    model, accuracy, report, confusion, scaler = train_and_evaluate_mlp(data)
 
-    print(f"Test Accuracy: {accuracy}")
-    print("Classification Report:\n", report)
-    print("Confusion Matrix:\n", confusion)
+if __name__ == '__main__':
+    # Example usage (replace 'your_data.csv' with your actual data file)
+    try:
+        data_pos = pd.read_csv('../../data/inputs/clf_descriptors_positive_staphylococcus.csv')
+        data_neg = pd.read_csv('../../data/inputs/clf_descriptors_negative_02_dataset.csv')
+        data = pd.concat([data_pos, data_neg])
+        data = data.drop(columns=['SEQUENCE'])
+        model, accuracy, report, confusion, scaler = train_and_evaluate_mlp(data)
 
-except FileNotFoundError:
-    print("Error: 'your_data.csv' not found. Please provide the correct file path.")
+        print(f"Test Accuracy: {accuracy}")
+        print("Classification Report:\n", report)
+        print("Confusion Matrix:\n", confusion)
 
-except Exception as e:
-    print(f"An error occurred: {e}")
+    except FileNotFoundError:
+        print("Error: 'your_data.csv' not found. Please provide the correct file path.")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
