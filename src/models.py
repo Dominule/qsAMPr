@@ -181,7 +181,7 @@ def evaluate_models(best_estimators, cv_models, names, test_sequences: List[str]
             print(classification_report(test_targets, predictions, output_dict=True)["weighted avg"]["precision"], end=",", file=f)
             print(classification_report(test_targets, predictions, output_dict=True)["weighted avg"]["recall"], end=",", file=f)
             print(classification_report(test_targets, predictions, output_dict=True)["weighted avg"]["f1-score"], end=",", file=f)
-            print(roc_auc_score(test_targets, predictions), end=",", file=f)
+            print(roc_auc_score(test_targets, predictions), end="\n", file=f)
 
     # save models
     for model, name in zip(cv_models, names):

@@ -79,23 +79,27 @@ def draw_confusion_matrix(model, x_test, y_test, folder: Path):
 
 
 def draw_cv_plots(model_grids, folder: Path):
-    file = folder / "plot_std_devs.png"
+    file = folder / "plot_metrics.png"
     svm_values = np.concatenate([np.array([model_grids[0].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]),
                                  np.array([model_grids[0].cv_results_[f'split{i}_test_precision'][0] for i in range(5)]),
                                  np.array([model_grids[0].cv_results_[f'split{i}_test_recall'][0] for i in range(5)]),
+                                 np.array([model_grids[0].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
                                  np.array([model_grids[0].cv_results_[f'split{i}_test_roc_auc'][0] for i in range(5)])])
     rf_values = np.concatenate([np.array([model_grids[1].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]),
                                 np.array([model_grids[1].cv_results_[f'split{i}_test_precision'][0] for i in range(5)]),
                                 np.array([model_grids[1].cv_results_[f'split{i}_test_recall'][0] for i in range(5)]),
+                                np.array([model_grids[0].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
                                 np.array([model_grids[1].cv_results_[f'split{i}_test_roc_auc'][0] for i in range(5)])])
     nb_values = np.concatenate([np.array([model_grids[2].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]),
                                 np.array([model_grids[2].cv_results_[f'split{i}_test_precision'][0] for i in range(5)]),
                                 np.array([model_grids[2].cv_results_[f'split{i}_test_recall'][0] for i in range(5)]),
+                                np.array([model_grids[0].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
                                 np.array([model_grids[2].cv_results_[f'split{i}_test_roc_auc'][0] for i in range(5)])])
     mlp_values = np.concatenate([np.array([model_grids[3].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]),
                                     np.array([model_grids[3].cv_results_[f'split{i}_test_precision'][0] for i in range(5)]),
                                     np.array([model_grids[3].cv_results_[f'split{i}_test_recall'][0] for i in range(5)]),
-                                    np.array([model_grids[3].cv_results_[f'split{i}_test_roc_auc'][0] for i in range(5)])])
+                                 np.array([model_grids[0].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
+                                 np.array([model_grids[3].cv_results_[f'split{i}_test_roc_auc'][0] for i in range(5)])])
 
     means = np.array([np.array(model_grids[0].cv_results_['mean_test_precision'][0]),
                       np.array(model_grids[0].cv_results_['mean_test_accuracy'][0]),
@@ -132,8 +136,8 @@ def draw_cv_plots(model_grids, folder: Path):
                             np.array(model_grids[3].cv_results_['std_test_roc_auc'][0])])
 
     data = {
-        'Model': ['SVM'] * 20 + ['RFC'] * 20 + ['NBC'] * 20 + ['MPC'] * 20,    # here
-        'Metric': (['Accuracy'] * 5 + ['Precision'] * 5 + ['Recall'] * 5 + ['ROC_AUC'] * 5) * 4, # here
+        'Model': ['SVM'] * 25 + ['RFC'] * 25 + ['NBC'] * 25 + ['MPC'] * 25,    # here
+        'Metric': (['Accuracy'] * 5 + ['Precision'] * 5 + ['Recall'] * 5 + ['F1'] * 5 + ['ROC_AUC'] * 5) * 4, # here
         'Value': np.concatenate([svm_values, rf_values, nb_values, mlp_values]) # here
     }
 

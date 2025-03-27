@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 from models import NormalizedNBCModel, NBCModel, evaluate_model
-from src.train_models.data_cleaner import preprocess_features
+from src.train_models_old.data_cleaner import preprocess_features
 
 evaluation_storage_folder = Path('../data/outputs/dataset03/evaluation_NBC')
 
