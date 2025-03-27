@@ -24,10 +24,10 @@ class ProteinModel(ABC):
         self.grid_search = GridSearchCV(self.get_model(),
                                         self.get_hyperparam_space(),
                                         scoring=['accuracy', 'precision', 'recall', 'f1', 'roc_auc'],
-                                        refit="accuracy",  # podle tohohle se vybere nejlepší model
+                                        refit="f1",  # podle tohohle se vybere nejlepší model
                                         verbose=0,
                                         return_train_score=True,
-                                        cv=5)
+                                        cv=5, n_jobs=-1)
 
     def fit(self, sequences: pd.DataFrame, targets: pd.Series):
         self.grid_search.fit(sequences, targets)
