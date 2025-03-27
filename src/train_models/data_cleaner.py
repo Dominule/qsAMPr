@@ -12,7 +12,7 @@ def preprocess_features(df):
     Preprocesses a pandas DataFrame by:
     1.  Scaling features using MinMaxScaler.
     2.  Removing features with zero variance.
-    3.  Removing features with high correlation (> 0.85).
+    3.  Removing features with high correlation (> 0.92).
     4.  Removing features containing "BLOSUM" in their name.
 
     Args:
@@ -36,10 +36,10 @@ def preprocess_features(df):
     print(f"Features dropped: {dropped_variance}")
     print(f"New shape: {df_feat.shape}\n")
 
-    # Trash randomly one of the features with correlation > 0.85
+    # Trash randomly one of the features with correlation > 0.92
     corr_matrix = df_feat.corr().abs()
     upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool))
-    to_drop_corr = [column for column in upper.columns if any(upper[column] > 0.85)]
+    to_drop_corr = [column for column in upper.columns if any(upper[column] > 0.92)]
     df_feat = df_feat.drop(columns=to_drop_corr)
     print("-----Correlation filter-----")
     print(f"Features dropped: {to_drop_corr}")
