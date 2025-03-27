@@ -88,55 +88,21 @@ def draw_cv_plots(model_grids, folder: Path):
     rf_values = np.concatenate([np.array([model_grids[1].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]),
                                 np.array([model_grids[1].cv_results_[f'split{i}_test_precision'][0] for i in range(5)]),
                                 np.array([model_grids[1].cv_results_[f'split{i}_test_recall'][0] for i in range(5)]),
-                                np.array([model_grids[0].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
+                                np.array([model_grids[1].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
                                 np.array([model_grids[1].cv_results_[f'split{i}_test_roc_auc'][0] for i in range(5)])])
     nb_values = np.concatenate([np.array([model_grids[2].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]),
                                 np.array([model_grids[2].cv_results_[f'split{i}_test_precision'][0] for i in range(5)]),
                                 np.array([model_grids[2].cv_results_[f'split{i}_test_recall'][0] for i in range(5)]),
-                                np.array([model_grids[0].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
+                                np.array([model_grids[2].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
                                 np.array([model_grids[2].cv_results_[f'split{i}_test_roc_auc'][0] for i in range(5)])])
     mlp_values = np.concatenate([np.array([model_grids[3].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]),
                                     np.array([model_grids[3].cv_results_[f'split{i}_test_precision'][0] for i in range(5)]),
                                     np.array([model_grids[3].cv_results_[f'split{i}_test_recall'][0] for i in range(5)]),
-                                 np.array([model_grids[0].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
+                                 np.array([model_grids[3].cv_results_[f'split{i}_test_f1'][0] for i in range(5)]),
                                  np.array([model_grids[3].cv_results_[f'split{i}_test_roc_auc'][0] for i in range(5)])])
 
-    means = np.array([np.array(model_grids[0].cv_results_['mean_test_precision'][0]),
-                      np.array(model_grids[0].cv_results_['mean_test_accuracy'][0]),
-                      np.array(model_grids[0].cv_results_['mean_test_recall'][0]),
-                      np.array(model_grids[0].cv_results_['mean_test_roc_auc'][0]),
-                      np.array(model_grids[1].cv_results_['mean_test_precision'][0]),
-                      np.array(model_grids[1].cv_results_['mean_test_accuracy'][0]),
-                      np.array(model_grids[1].cv_results_['mean_test_recall'][0]),
-                      np.array(model_grids[1].cv_results_['mean_test_roc_auc'][0]),
-                      np.array(model_grids[2].cv_results_['mean_test_precision'][0]),
-                      np.array(model_grids[2].cv_results_['mean_test_accuracy'][0]),
-                      np.array(model_grids[2].cv_results_['mean_test_recall'][0]),
-                      np.array(model_grids[2].cv_results_['mean_test_roc_auc'][0]),
-                        np.array(model_grids[3].cv_results_['mean_test_precision'][0]),
-                        np.array(model_grids[3].cv_results_['mean_test_accuracy'][0]),
-                        np.array(model_grids[3].cv_results_['mean_test_recall'][0]),
-                        np.array(model_grids[3].cv_results_['mean_test_roc_auc'][0])])
-
-    std_devs = np.array([np.array(model_grids[0].cv_results_['std_test_precision'][0]),
-                         np.array(model_grids[0].cv_results_['std_test_accuracy'][0]),
-                         np.array(model_grids[0].cv_results_['std_test_recall'][0]),
-                         np.array(model_grids[0].cv_results_['std_test_roc_auc'][0]),
-                         np.array(model_grids[1].cv_results_['std_test_precision'][0]),
-                         np.array(model_grids[1].cv_results_['std_test_accuracy'][0]),
-                         np.array(model_grids[1].cv_results_['std_test_recall'][0]),
-                         np.array(model_grids[1].cv_results_['std_test_roc_auc'][0]),
-                         np.array(model_grids[2].cv_results_['std_test_precision'][0]),
-                         np.array(model_grids[2].cv_results_['std_test_accuracy'][0]),
-                         np.array(model_grids[2].cv_results_['std_test_recall'][0]),
-                         np.array(model_grids[2].cv_results_['std_test_roc_auc'][0]),
-                            np.array(model_grids[3].cv_results_['std_test_precision'][0]),
-                            np.array(model_grids[3].cv_results_['std_test_accuracy'][0]),
-                            np.array(model_grids[3].cv_results_['std_test_recall'][0]),
-                            np.array(model_grids[3].cv_results_['std_test_roc_auc'][0])])
-
     data = {
-        'Model': ['SVM'] * 25 + ['RFC'] * 25 + ['NBC'] * 25 + ['MPC'] * 25,    # here
+        'Model': ['SVC'] * 25 + ['RFC'] * 25 + ['NBC'] * 25 + ['MLPC'] * 25,    # here
         'Metric': (['Accuracy'] * 5 + ['Precision'] * 5 + ['Recall'] * 5 + ['F1'] * 5 + ['ROC_AUC'] * 5) * 4, # here
         'Value': np.concatenate([svm_values, rf_values, nb_values, mlp_values]) # here
     }
