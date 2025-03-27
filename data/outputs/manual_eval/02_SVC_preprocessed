@@ -1,0 +1,18 @@
+Hyperparameters:
+{'C': 10, 'gamma': 1, 'kernel': 'rbf'}
+
+
+              precision    recall  f1-score   support
+
+           0      0.859     0.869     0.864        84
+           1      0.880     0.871     0.876        93
+
+    accuracy                          0.870       177
+   macro avg      0.870     0.870     0.870       177
+weighted avg      0.870     0.870     0.870       177
+
+Confusion matrix:
+col_0      0   1
+ACTIVITY
+0         73  11
+1         12  81

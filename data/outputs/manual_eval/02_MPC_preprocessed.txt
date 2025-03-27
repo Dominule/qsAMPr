@@ -1,0 +1,18 @@
+Hyperparameters:
+{'alpha': 0.001, 'early_stopping': True, 'hidden_layer_sizes': (192, 96), 'solver': 'adam'}
+
+
+              precision    recall  f1-score   support
+
+           0      0.655     0.929     0.768        84
+           1      0.897     0.559     0.689        93
+
+    accuracy                          0.734       177
+   macro avg      0.776     0.744     0.729       177
+weighted avg      0.782     0.734     0.727       177
+
+Confusion matrix:
+col_0      0   1
+ACTIVITY        
+0         78   6
+1         41  52
