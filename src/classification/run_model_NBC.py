@@ -5,11 +5,11 @@ from sklearn.model_selection import train_test_split
 from models import NormalizedNBCModel, NBCModel, evaluate_model
 from src.train_models_old.data_cleaner import preprocess_features
 
-evaluation_storage_folder = Path('../data/outputs/dataset03/evaluation_NBC')
+evaluation_storage_folder = Path('../../data/outputs/dataset03/evaluation_NBC')
 
 # load data
-df_pos = pd.read_csv('../data/inputs/clf_descriptors_positive_staphylococcus.csv')
-df_neg = pd.read_csv('../data/inputs/clf_descriptors_negative_03_dataset.csv')
+df_pos = pd.read_csv('../../data/inputs/clf_descriptors_positive_staphylococcus.csv')
+df_neg = pd.read_csv('../../data/inputs/clf_descriptors_negative_03_dataset.csv')
 df = pd.concat([df_pos, df_neg])
 
 X = df.drop(columns=['SEQUENCE','ACTIVITY'])

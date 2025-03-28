@@ -2,6 +2,10 @@
 import pandas as pd
 import numpy as np
 
+"""
+Transform regression datasets into classification datasets (activity - 0,1)
+"""
+
 # positive
 df_pos = pd.read_csv('../../data/inputs/descriptors_positive_staphylococcus.csv')
 # negative against staphylococcus but amps

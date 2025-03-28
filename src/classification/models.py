@@ -12,45 +12,15 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from plot_model import draw_roc_curves, draw_precision_recall, draw_confusion_matrix, draw_cv_plot, draw_cv_plots
+from src.skeleton import PeptideModel
 
 """
-Interface for models
+Classification models based on skeleton
 """
-
-
-class ProteinModel(ABC):
-    def __init__(self):
-        self.model = None
-        self.grid_search = GridSearchCV(self.get_model(),
-                                        self.get_hyperparam_space(),
-                                        scoring=['accuracy', 'precision', 'recall', 'f1', 'roc_auc'],
-                                        refit="f1",  # podle tohohle se vybere nejlepší model
-                                        verbose=0,
-                                        return_train_score=True,
-                                        cv=5, n_jobs=-1)
-
-    def fit(self, sequences: pd.DataFrame, targets: pd.Series):
-        self.grid_search.fit(sequences, targets)
-        self.model = self.grid_search.best_estimator_
-        return self
-
-    @abstractmethod
-    def get_hyperparam_space(self) -> Dict[str, List[Any]]:
-        ...
-
-    @abstractmethod
-    def get_model(self) -> Any:
-        ...
-
-    def predict(self, sequences: pd.DataFrame) -> pd.Series:
-        return self.model.predict(sequences)
-
-    def get_grid_search(self):
-        return self.grid_search
 
 
 ### models with hyperparameters
-class SVCModel(ProteinModel):
+class SVCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {
             'C': [0.1, 1, 10, 100, 1000],
@@ -60,7 +30,7 @@ class SVCModel(ProteinModel):
     def get_model(self) -> Any:
         return SVC()
 
-class RFCModel(ProteinModel):
+class RFCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {
             'n_estimators': [350, 400, 450, 550],
@@ -70,13 +40,13 @@ class RFCModel(ProteinModel):
     def get_model(self) -> Any:
         return RandomForestClassifier()
 
-class NBCModel(ProteinModel):
+class NBCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {}
     def get_model(self) -> Any:
         return GaussianNB()
 
-class MPCModel(ProteinModel):
+class MPCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {
             'hidden_layer_sizes' : [(32*i, 16*i) for i in range(1, 11)]
@@ -96,7 +66,7 @@ class MPCModel(ProteinModel):
 
 
 ### models pipeline with normalization
-class NormalizedSVCModel(ProteinModel):
+class NormalizedSVCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {
             "svc__C": [0.1, 1, 10, 100, 1000],
@@ -109,7 +79,7 @@ class NormalizedSVCModel(ProteinModel):
             ("svc", SVC())
         ])
 
-class NormalizedRFCModel(ProteinModel):
+class NormalizedRFCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {
             'rf__n_estimators': [350, 400, 450, 550],
@@ -122,7 +92,7 @@ class NormalizedRFCModel(ProteinModel):
             ("rf", RandomForestClassifier())
         ])
 
-class NormalizedNBCModel(ProteinModel):
+class NormalizedNBCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {}
     def get_model(self) -> Any:
@@ -131,7 +101,7 @@ class NormalizedNBCModel(ProteinModel):
             ("nb", GaussianNB())
         ])
 
-class NormalizedMPCModel(ProteinModel):
+class NormalizedMPCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {
             'mlp__hidden_layer_sizes' : [(32*i, 16*i) for i in range(1, 11)]
@@ -154,7 +124,7 @@ class NormalizedMPCModel(ProteinModel):
 
 
 ### evaluation functions - save the model and the metrics
-def evaluate_model(model: ProteinModel, sequences: List[str], targets: List[float], folder: Path):
+def evaluate_model(model: PeptideModel, sequences: List[str], targets: List[float], folder: Path):
     file_report = folder / "metrics.txt"
     file_model = folder / "model.pkl"
     draw_cv_plot(model.grid_search.cv_results_, folder)

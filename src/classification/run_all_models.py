@@ -4,13 +4,13 @@ from pathlib import Path
 from sklearn.model_selection import train_test_split
 from models import (evaluate_models, NormalizedNBCModel, NormalizedRFCModel,
                     NormalizedSVCModel, NormalizedMPCModel)
-from src.train_models.data_cleaner import preprocess_features
+from src.train_models_old.data_cleaner import preprocess_features
 
-evaluation_storage_folder = Path('../data/outputs/dataset03/evaluation_all')
+evaluation_storage_folder = Path('../../data/outputs/dataset03/evaluation_all')
 
 # load data
-df_pos = pd.read_csv('../data/inputs/clf_descriptors_positive_staphylococcus.csv')
-df_neg = pd.read_csv('../data/inputs/clf_descriptors_negative_03_dataset.csv')
+df_pos = pd.read_csv('../../data/inputs/clf_descriptors_positive_staphylococcus.csv')
+df_neg = pd.read_csv('../../data/inputs/clf_descriptors_negative_03_dataset.csv')
 df = pd.concat([df_pos, df_neg])
 X = df.drop(columns=['SEQUENCE', 'ACTIVITY'])
 y = df['ACTIVITY']

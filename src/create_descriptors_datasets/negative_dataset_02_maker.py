@@ -9,6 +9,7 @@ path_source_fir = "../../data/samples_negative_SwissProt/negative_peptides"
 path_source_sec = "../../data/samples_amPEPpy/peptides_nonAMPs_amPEPpy.csv"
 path_store = "../../data/inputs/descriptors_negative_02_dataset.csv"
 new_activity = 10000
+number_to_keep = 218
 
 # Load data
 negative_fir_df = pd.read_csv(path_source_fir)
@@ -24,7 +25,7 @@ negative_sec_df["ACTIVITY"] = new_activity
 # filter sequences
 negative_sec_df = negative_sec_df[negative_sec_df["SEQUENCE"].str.len() <= 100]
 # keep random 200 sequences from negative_sec_df --> together cca 450 sequences
-negative_sec_df = negative_sec_df.sample(n=197, random_state=42)
+negative_sec_df = negative_sec_df.sample(n=number_to_keep, random_state=42)
 print(negative_sec_df.shape)
 negative_df = pd.concat([negative_fir_df, negative_sec_df], ignore_index=True)
 print(negative_df.shape)

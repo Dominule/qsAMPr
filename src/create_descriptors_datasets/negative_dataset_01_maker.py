@@ -8,7 +8,7 @@ Create negative dataset -01- staphylococcus inactive + gram negative bacteria ac
 path_source_fir = "../../data/samples_DBAASP/peptides_staphylococcus_inactive.csv"
 path_source_sec = "../../data/samples_DBAASP/peptides_gram_negative_bacteria_active.csv"
 path_store = "../../data/inputs/descriptors_negative_01_dataset.csv"
-
+negatives_to_keep = 224     # number of negative sequences from gram negative to keep
 
 # Load peptides_staphylococcus_active.csv
 negative_fir_df = pd.read_csv(path_source_fir)
@@ -18,7 +18,7 @@ print(negative_fir_df.shape)
 print(negative_sec_df.shape)
 
 # keep random 200 sequences from negative_sec_df --> together cca 500 sequences, set the activity
-negative_sec_df = negative_sec_df.sample(n=157, random_state=42)
+negative_sec_df = negative_sec_df.sample(n=negatives_to_keep, random_state=42)
 negative_fir_df.columns = ['SEQUENCE', 'ACTIVITY']
 negative_sec_df.columns = ['SEQUENCE']
 max_activity = negative_fir_df["ACTIVITY"].max()
