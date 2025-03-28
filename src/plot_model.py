@@ -110,6 +110,8 @@ def draw_cv_plots(model_grids, folder: Path):
     df = pd.DataFrame(data)
     sns.boxplot(x='Model', y='Value', data=df, hue='Metric', palette='Set2')
     plt.title('Comparison of performance metrics for all models.')
+    ax = plt.gca()
+    ax.set_ylim([0, 1])
     plt.savefig(file)
     plt.show()
     plt.clf()

@@ -1,18 +1,18 @@
 Hyperparameters:
-{'rf__criterion': 'gini', 'rf__max_depth': 8, 'rf__n_estimators': 400}
+{'rf__criterion': 'gini', 'rf__max_depth': 7, 'rf__n_estimators': 350}
 
 
               precision    recall  f1-score   support
 
-           0      0.667     0.667     0.667        84
-           1      0.699     0.699     0.699        93
+           0      0.663     0.655     0.659        84
+           1      0.691     0.699     0.695        93
 
-    accuracy                          0.684       177
-   macro avg      0.683     0.683     0.683       177
-weighted avg      0.684     0.684     0.684       177
+    accuracy                          0.678       177
+   macro avg      0.677     0.677     0.677       177
+weighted avg      0.678     0.678     0.678       177
 
 Confusion matrix:
 col_0      0   1
 ACTIVITY        
-0         56  28
+0         55  29
 1         28  65
