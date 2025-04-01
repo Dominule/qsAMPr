@@ -29,6 +29,8 @@ class SVCModel(PeptideModel):
         }
     def get_model(self) -> Any:
         return SVC()
+    def get_mode(self) -> str:
+        return "classification"
 
 class RFCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
@@ -39,12 +41,16 @@ class RFCModel(PeptideModel):
         }
     def get_model(self) -> Any:
         return RandomForestClassifier()
+    def get_mode(self) -> str:
+        return "classification"
 
 class NBCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {}
     def get_model(self) -> Any:
         return GaussianNB()
+    def get_mode(self) -> str:
+        return "classification"
 
 class MPCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
@@ -63,6 +69,8 @@ class MPCModel(PeptideModel):
 
     def get_model(self) -> Any:
         return MLPClassifier()
+    def get_mode(self) -> str:
+        return "classification"
 
 
 ### models pipeline with normalization
@@ -71,26 +79,30 @@ class NormalizedSVCModel(PeptideModel):
         return {
             "svc__C": [0.1, 1, 10, 100, 1000],
             "svc__kernel": ["linear", "rbf"],
-            "svc__gamma": [1, 0.1, 0.01, 0.001, 0.0001]
+            "svc__gamma": [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]
         }
     def get_model(self) -> Any:
         return Pipeline([
             ("normalize", MinMaxScaler()),
             ("svc", SVC())
         ])
+    def get_mode(self) -> str:
+        return "classification"
 
 class NormalizedRFCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
         return {
-            'rf__n_estimators': [350, 400, 450, 550],
-            'rf__max_depth' : [3, 4, 5, 6, 7, 8],
-            'rf__criterion' :['gini', 'entropy']
+            'rf__n_estimators': [50,100, 250, 500, 1000],
+            'rf__max_depth' : [2,5,7,10,20,25,50,None],
+            'rf__criterion' : ['gini', 'entropy']
         }
     def get_model(self) -> Any:
         return Pipeline([
             ("normalize", MinMaxScaler()),
             ("rf", RandomForestClassifier())
         ])
+    def get_mode(self) -> str:
+        return "classification"
 
 class NormalizedNBCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
@@ -100,6 +112,8 @@ class NormalizedNBCModel(PeptideModel):
             ("normalize", MinMaxScaler()),
             ("nb", GaussianNB())
         ])
+    def get_mode(self) -> str:
+        return "classification"
 
 class NormalizedMPCModel(PeptideModel):
     def get_hyperparam_space(self) -> Dict[str, List[Any]]:
@@ -120,6 +134,8 @@ class NormalizedMPCModel(PeptideModel):
             ("normalize", StandardScaler()),
             ("mlp", MLPClassifier())
         ])
+    def get_mode(self) -> str:
+        return "classification"
 
 
 
@@ -165,4 +181,4 @@ def evaluate_models(best_estimators, cv_models, names, test_sequences: List[str]
 
 
 
-MODELS = [SVCModel(), RFCModel(), NBCModel(), MPCModel()]
+# MODELS = [SVCModel(), RFCModel(), NBCModel(), MPCModel()]

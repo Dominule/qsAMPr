@@ -1,4 +1,3 @@
-# ROC curve
 from pathlib import Path
 from typing import Dict
 
@@ -38,7 +37,7 @@ def draw_cv_plot(cv_results: Dict, folder: Path):
     # Plots graph
     plt.title('Performance metrics')
     ax = plt.gca()
-    ax.set_ylim([0.45, 1])
+    ax.set_ylim([0, 1])
     plt.xlabel('Dataset')
     plt.ylabel('Value')
     plt.savefig(file)
@@ -52,6 +51,8 @@ def draw_roc_curves(models, x_test, y_test, folder: Path):
     ax = plt.gca()
     for model in models:
         RocCurveDisplay.from_estimator(model, x_test, y_test, ax=ax)
+    ax.plot([0, 1], [0, 1], transform=ax.transAxes)
+    ax.set_ylim([0, 1])
     plt.title('ROC curves of all models')
     plt.savefig(file)
     plt.clf()
@@ -64,6 +65,7 @@ def draw_precision_recall(models, x_test, y_test, folder: Path):
     ax = plt.gca()
     for model in models:
         PrecisionRecallDisplay.from_estimator(model, x_test, y_test, ax=ax)
+    ax.set_ylim([0, 1])
     plt.title('Precision-recall curves of all models')
     plt.savefig(file)
     plt.clf()

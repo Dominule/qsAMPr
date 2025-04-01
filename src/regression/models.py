@@ -1,5 +1,7 @@
+import pickle
 from typing import Dict, List, Any
 
+import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
 from sklearn.pipeline import Pipeline
@@ -106,3 +108,16 @@ class NormalizedMPRModel(PeptideModel):
 
 
 ### evaluation functions - save the model and the metrics - todo
+def evaluate_model(model: PeptideModel, sequences: List[str], targets: List[float], folder: Path):
+    file_report = folder / "metrics.txt"
+    file_model = folder / "model.pkl"
+    draw_regression(model.model, folder)
+    draw_confusion_matrix(model.model, sequences, targets, folder)
+    predictions = model.predict(sequences)
+    folder.mkdir(exist_ok=True)
+    with open(file_model, 'wb') as file:
+        pickle.dump(model, file)
+    with open(file_report, 'w') as f:
+        print("Hyperparameters:\n" + str(model.grid_search.best_params_) + "\n\n", file=f)
+        print(regression_report(targets, predictions, digits=3), file=f)
+        print(f"Confusion matrix:\n{pd.crosstab(targets, predictions)}", file=f)
