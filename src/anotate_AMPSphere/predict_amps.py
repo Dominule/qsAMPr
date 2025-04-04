@@ -8,7 +8,7 @@ from src.classification.models import RFCModel
 Predict activity of AMPSphere samples using a trained model.
 """
 
-prediction_storage_folder = "../../data/outputs/predictions/ampsphere_100_samples.csv"
+prediction_storage_folder = "../../data/outputs/predictions/ampsphere_100_samples.tsv"
 
 model_path_01 = "../../data/outputs/dataset01/evaluation_all/RFC/model.pkl"
 model_path_02 = "../../data/outputs/dataset02/evaluation_all/RFC/model.pkl"
@@ -44,4 +44,4 @@ predictions_df = pd.DataFrame({
 })
 
 # # store predictions
-predictions_df.to_csv(prediction_storage_folder, index=False)
+predictions_df.to_csv(prediction_storage_folder, index=False, sep='\t', decimal=',')
