@@ -1,18 +1,18 @@
 Hyperparameters:
-{'svc__C': 10, 'svc__gamma': 0.1, 'svc__kernel': 'rbf'}
+{'svc__C': 1, 'svc__gamma': 1, 'svc__kernel': 'rbf'}
 
 
               precision    recall  f1-score   support
 
-           0      0.825     0.920     0.870        87
-           1      0.921     0.828     0.872        99
+           0      0.883     0.865     0.874        96
+           1      0.859     0.878     0.868        90
 
     accuracy                          0.871       186
-   macro avg      0.873     0.874     0.871       186
-weighted avg      0.876     0.871     0.871       186
+   macro avg      0.871     0.871     0.871       186
+weighted avg      0.871     0.871     0.871       186
 
 Confusion matrix:
 col_0      0   1
 ACTIVITY        
-0         80   7
-1         17  82
+0         83  13
+1         11  79

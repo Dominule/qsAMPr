@@ -4,15 +4,15 @@ Hyperparameters:
 
               precision    recall  f1-score   support
 
-           0      0.883     0.782     0.829        87
-           1      0.826     0.909     0.865        99
+           0      0.894     0.792     0.840        96
+           1      0.802     0.900     0.848        90
 
-    accuracy                          0.849       186
-   macro avg      0.854     0.845     0.847       186
-weighted avg      0.853     0.849     0.848       186
+    accuracy                          0.844       186
+   macro avg      0.848     0.846     0.844       186
+weighted avg      0.850     0.844     0.844       186
 
 Confusion matrix:
 col_0      0   1
 ACTIVITY        
-0         68  19
-1          9  90
+0         76  20
+1          9  81

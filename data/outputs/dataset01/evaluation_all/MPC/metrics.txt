@@ -1,18 +1,18 @@
 Hyperparameters:
-{'mlp__alpha': 0.0001, 'mlp__early_stopping': True, 'mlp__hidden_layer_sizes': (192, 96, 48), 'mlp__solver': 'adam'}
+{'mlp__alpha': 0.001, 'mlp__early_stopping': True, 'mlp__hidden_layer_sizes': (320, 160), 'mlp__solver': 'adam'}
 
 
               precision    recall  f1-score   support
 
-           0      0.642     0.782     0.705        87
-           1      0.762     0.616     0.682        99
+           0      0.758     0.521     0.617        96
+           1      0.617     0.822     0.705        90
 
-    accuracy                          0.694       186
-   macro avg      0.702     0.699     0.693       186
-weighted avg      0.706     0.694     0.692       186
+    accuracy                          0.667       186
+   macro avg      0.687     0.672     0.661       186
+weighted avg      0.689     0.667     0.660       186
 
 Confusion matrix:
 col_0      0   1
 ACTIVITY        
-0         68  19
-1         38  61
+0         50  46
+1         16  74

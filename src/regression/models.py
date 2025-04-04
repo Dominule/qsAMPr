@@ -103,12 +103,25 @@ class NormalizedRFRModel(PeptideModel):
             # TODO change hyperparams
             'rfr__n_estimators': [50, 100, 250, 500, 1000],
             'rfr__max_depth': [2, 5, 7, 10, 20, 25, 50, None],
-            "rfr__criterion": ["squared_error", "absolute_error"]
+            "rfr__criterion": ["gini"]
         }
     def get_model(self) -> Any:
         return Pipeline([
             ("normalize", MinMaxScaler()),
             ("rfr", RandomForestRegressor())
+        ])
+    def get_mode(self) -> str:
+        return 'regression'
+
+class NormalizedRGRModel(PeptideModel):
+    def get_hyperparam_space(self) -> Dict[str, List[Any]]:
+        return {
+            'rgr__alpha': [0.1, 1.0, 10.0, 100.0]
+        }
+    def get_model(self) -> Any:
+        return Pipeline([
+            ("normalize", MinMaxScaler()),
+            ("rgr", Ridge())
         ])
     def get_mode(self) -> str:
         return 'regression'

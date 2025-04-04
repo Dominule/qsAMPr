@@ -50,5 +50,8 @@ class PeptideModel(ABC):
     def predict(self, sequences: pd.DataFrame) -> pd.Series:
         return self.model.predict(sequences)
 
+    def predict_proba(self, sequences: pd.DataFrame) -> pd.Series:
+        return self.model.predict_proba(sequences)
+
     def get_grid_search(self):
         return self.grid_search

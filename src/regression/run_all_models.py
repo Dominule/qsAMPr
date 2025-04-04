@@ -2,23 +2,21 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 from sklearn.model_selection import train_test_split
-from src.classification.models import (evaluate_models, NormalizedNBCModel, NormalizedRFCModel,
-                                       NormalizedSVCModel, NormalizedMPCModel)
+from src.regression.models import (evaluate_models, NormalizedSVRModel, NormalizedRFRModel,
+                                       NormalizedRGRModel, NormalizedMPRModel)
 from src.train_models_old.data_cleaner import preprocess_features
 
-evaluation_storage_folder = Path('../../data/outputs/dataset03/evaluation_all')
+evaluation_storage_folder = Path('../../data/outputs/regression_dataset/evaluation_all')
 
 # load data
-df_pos = pd.read_csv('../../data/inputs/clf_descriptors_positive_staphylococcus.csv')
-df_neg = pd.read_csv('../../data/inputs/clf_descriptors_negative_03_dataset.csv')
-df = pd.concat([df_pos, df_neg])
+df = pd.read_csv('../../data/inputs/reg_descriptors_staphylococcus_MICs.csv')
 X = df.drop(columns=['SEQUENCE', 'ACTIVITY'])
 y = df['ACTIVITY']
 # X = preprocess_features(X)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=30)
 
-MODELS = [NormalizedSVCModel(), NormalizedRFCModel(), NormalizedNBCModel(), NormalizedMPCModel()]
-names = ["SVC", "RFC", "NBC", "MPC"]
+MODELS = [NormalizedSVRModel(), NormalizedRFRModel(), NormalizedRGRModel(), NormalizedMPRModel()]
+names = ["SVR", "RFR", "RGR", "MPR"]
 cv_models = []
 best_estimators = []
 for model in MODELS:
