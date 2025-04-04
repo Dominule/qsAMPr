@@ -1,18 +1,18 @@
 Hyperparameters:
-{'rf__criterion': 'entropy', 'rf__max_depth': 7, 'rf__n_estimators': 450}
+{'rf__criterion': 'entropy', 'rf__max_depth': None, 'rf__n_estimators': 50}
 
 
               precision    recall  f1-score   support
 
-           0      0.890     0.869     0.880        84
-           1      0.884     0.903     0.894        93
+           0      0.860     0.920     0.889        87
+           1      0.925     0.869     0.896        99
 
-    accuracy                          0.887       177
-   macro avg      0.887     0.886     0.887       177
-weighted avg      0.887     0.887     0.887       177
+    accuracy                          0.892       186
+   macro avg      0.892     0.894     0.892       186
+weighted avg      0.895     0.892     0.893       186
 
 Confusion matrix:
 col_0      0   1
 ACTIVITY        
-0         73  11
-1          9  84
+0         80   7
+1         13  86
