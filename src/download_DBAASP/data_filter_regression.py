@@ -13,7 +13,7 @@ path_store = "../../data/samples_DBAASP/reg_staphylococcus_MICs.csv"  # path to 
 bacteria = "Staphylococcus aureus"      # target bacteria
 method = "MIC"          # Minimal Inhibitory Concentration
 range_threshold = 5         # if mic contains "-" --> threshold for the range of MIC values
-mic_threshold = 10000         # greater than this value will not be stored
+mic_threshold = 100         # greater than this value will not be stored
 
 only_digits = 0
 unique_sequences = []

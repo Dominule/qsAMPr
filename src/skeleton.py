@@ -26,7 +26,7 @@ class PeptideModel(ABC):
                                             self.get_hyperparam_space(),
                                             scoring=['neg_mean_squared_error', 'r2'],
                                             refit="r2",
-                                            verbose=0,
+                                            verbose=1,
                                             return_train_score=True,
                                             cv=5, n_jobs=-1)
 

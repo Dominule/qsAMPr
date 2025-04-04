@@ -82,6 +82,7 @@ def draw_confusion_matrix(model, x_test, y_test, folder: Path):
 
 def draw_cv_plots(model_grids, folder: Path):
     file = folder / "plot_metrics.png"
+    print(np.array([model_grids[0].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]))
     svm_values = np.concatenate([np.array([model_grids[0].cv_results_[f'split{i}_test_accuracy'][0] for i in range(5)]),
                                  np.array([model_grids[0].cv_results_[f'split{i}_test_precision'][0] for i in range(5)]),
                                  np.array([model_grids[0].cv_results_[f'split{i}_test_recall'][0] for i in range(5)]),
@@ -108,6 +109,9 @@ def draw_cv_plots(model_grids, folder: Path):
         'Metric': (['Accuracy'] * 5 + ['Precision'] * 5 + ['Recall'] * 5 + ['F1'] * 5 + ['ROC_AUC'] * 5) * 4, # here
         'Value': np.concatenate([svm_values, rf_values, nb_values, mlp_values]) # here
     }
+    # store data into csv
+    storage = folder / "cv_results_data.csv"
+    pd.DataFrame(data).to_csv(storage, index=False)
 
     df = pd.DataFrame(data)
     sns.boxplot(x='Model', y='Value', data=df, hue='Metric', palette='Set2')
