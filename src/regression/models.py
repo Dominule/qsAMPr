@@ -51,7 +51,7 @@ class RFRModel(PeptideModel):
         return {
             'n_estimators': [350, 400, 450, 550],
             'max_depth' : [3, 4, 5, 6, 7, 8],
-            'criterion' :['mse', 'mae']
+            'criterion' :['absolute_error', 'squared_error']
         }
     def get_model(self) -> Any:
         return RandomForestRegressor()
@@ -103,7 +103,7 @@ class NormalizedRFRModel(PeptideModel):
             # TODO change hyperparams
             'rfr__n_estimators': [50, 100, 250, 500, 1000],
             'rfr__max_depth': [2, 5, 7, 10, 20, 25, 50, None],
-            "rfr__criterion": ["gini"]
+            "rfr__criterion": ["absolute_error", "poisson", "squared_error"],
         }
     def get_model(self) -> Any:
         return Pipeline([
@@ -132,9 +132,9 @@ class NormalizedMPRModel(PeptideModel):
             "mpr__hidden_layer_sizes": [(64, 32), (128, 64), (64, 32, 16)],
             "mpr__solver": ["adam"],
             "mpr__alpha": [0.001, 0.01],
-            "mpr__early_stopping": [True]
+            "mpr__early_stopping": [True],
+            "mpr__learning_rate": ['adaptive', 'constant']
             # activation: ['relu', 'tanh']
-            # learning_rate: ['adaptive', 'constant']
             # batch_size: [32, 64]
         }
 
@@ -156,6 +156,8 @@ def evaluate_model(model: PeptideModel, X_test, y_test: List[float], folder: Pat
     file_predictions = folder / "predictions.csv"
 
     predictions = model.predict(X_test)
+    print("Predictions: ", predictions)
+
     draw_scatterplot(y_test, predictions, folder)
     draw_histogram(y_test, predictions, folder)
 
@@ -171,4 +173,9 @@ def evaluate_model(model: PeptideModel, X_test, y_test: List[float], folder: Pat
         # print("MSE: ", model.grid_search.cv_results_['mean_squared_error'], file=f)
         # print("MAE: ", model.grid_search.cv_results_['mean_absolute_error'], file=f)
     with open(file_predictions, 'w') as f:
-        pd.DataFrame({'y_true': y_test, 'y_pred': predictions}).to_csv(f, index=False)
+        results = zip(y_test, predictions)
+        df = pd.DataFrame(results, columns=["y_test", "y_predicted"])
+        # sort by y_test
+        df = df.sort_values(by="y_test")
+        df.to_csv(file_predictions, index=False)
+        # pd.DataFrame({'y_true': y_test, 'y_pred': predictions}).to_csv(f, index=False)

@@ -1,0 +1,7 @@
+Hyperparameters:
+{'alpha': 100.0}
+
+
+Metrics:
+
+R2 score:  -0.009343652594829121

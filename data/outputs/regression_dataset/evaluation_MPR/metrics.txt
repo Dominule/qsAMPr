@@ -1,0 +1,7 @@
+Hyperparameters:
+{'mpr__alpha': 0.001, 'mpr__early_stopping': True, 'mpr__hidden_layer_sizes': (64, 32, 16), 'mpr__learning_rate': 'adaptive', 'mpr__solver': 'adam'}
+
+
+Metrics:
+
+R2 score:  -0.022520352501462736

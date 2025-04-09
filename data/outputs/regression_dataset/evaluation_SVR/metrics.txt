@@ -1,0 +1,7 @@
+Hyperparameters:
+{'svr__C': 100, 'svr__gamma': 1, 'svr__kernel': 'rbf'}
+
+
+Metrics:
+
+R2 score:  -0.0006950012601333322
