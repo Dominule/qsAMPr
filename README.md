@@ -3,19 +3,23 @@ This is a bachelor project for prediction of potencial AMPs using ML and data fr
 
 ## Quick description
 In folder [inputs](data/inputs) are stored datasets with aminoacid sequences, their activities and computed descriptors.
-In folder outputs are stored trained models and results. For example: [evaluation for dataset 02](data/outputs/dataset02/evaluation_all)
-Interface for models: [skeleton](src/skeleton.py)
-Setup for classification models: [classification](src/classification/models.py)
-Setup for regression models: [regression](src/regression/models.py)
-Script to run all classification models: [run_all](src/classification/run_all_models.py)
+In folder [outputs](data/outputs) are stored trained models and results. For example: [evaluation for dataset 02](data/outputs/dataset02/evaluation_all).
 
-Clustering and visualized descriptors: [clustering](src/cluster_stuff/better_clustering.ipynb)
+Interface for models: [skeleton](src/skeleton.py).
+Setup for classification models: [classification](src/classification/models.py).
+Setup for regression models: [regression](src/regression/models.py).
+
+Script to run all classification models: [run all](src/classification/run_all_models.py).
+
+Clustering and visualized descriptors: [clustering](src/cluster_stuff/better_clustering.ipynb).
 
 ## Datasets
-One positive dataset of sequences active against styphylococcus aureus.
-Three negative datasets:
+One positive dataset of sequences active against styphylococcus aureus, three negative datasets:
+
 -01- staphylococcus inactive + gram negative bacteria active peptides* (DBAASP)
+
 -02- random real sequences (UniProt from AntiTbPred)
+
 -03- random generated sequences (with the same amino acid distribution as the positive dataset)
 
 [General visualisation.](src/visualize_data/general_visualization.ipynb)
