@@ -22,17 +22,47 @@ One positive dataset of sequences active against styphylococcus aureus, three ne
 
 -03- random generated sequences (with the same amino acid distribution as the positive dataset)
 
-[General visualisation.](src/visualize_data/general_visualization.ipynb)
+For data visualization see [General visualisation.](src/visualize_data/general_visualization.ipynb)
 
-Datasets were generated using scripts in this folder: [create_datasets](src/create_descriptors_datasets).
+Datasets were generated using scripts in this folder: [create_datasets](src/create_descriptors_datasets). Descriptors were computed using all available descriptors in `peptides` package.
 
 ## Usage
-To be added.
+To get started, first create a virtual environment to isolate the project dependencies.
+
+*On Windows:*
+```
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+*On macOS and Linux:*
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+This will create a virtual environment named venv, activate it, install all the necessary packages listed in requirements.txt.
+
+In src/classification/run_all_models.py choose the dataset you want to use for training by setting variable `dst` to value '01'/'02'/'03' (see section Datasets).
+
+Train the models:
+```
+python src/classification/run_all_models.py
+```
+
+Your models and graphs will be stored in `data/outputs/dataset0x/evaluation_all`. (0x - chosen dataset)
+
+## Running on a different dataset
+To run on a different (balanced) dataset change the path to your dataset by setting variables `df_pos` (positive dataset) and `df_neg` (negative dataset) in `src/classification/run_all_models.py`.
+
+The dataset should contain columns 'SEQUENCE', 'ACTIVITY' and computed descritors.
+
 
 ## Backstory
 In a beautiful world where no evil was present, suddenly a big wicked antibiotic resistance came. The world changed and there was no savior...
 
-Until a little peptide appeared. And not just one but quite a few came to fight with the Resistance. These antimicrobial peptides (AMPs), invisible for human eyes, shine in the darkness and need our help.
+Until a little peptide appeared. And not just one but quite a few came to fight with the Resistance. These antimicrobial peptides (AMPs) and other antimicrobial substances, invisible for human eyes, shine in the darkness and need our help.
 Only together we can defeat the Resistance and make the world better again.
 
 
