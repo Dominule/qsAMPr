@@ -1,4 +1,6 @@
 """
+TODO - get done amp_all
+
 Check if there are duplicate entries in the AMPSphere sample list and in our regression dataset.
 Compute descriptors.
 Store ampsphere samples in a separate file.
@@ -6,10 +8,10 @@ Store ampsphere samples in a separate file.
 import pandas as pd
 import peptides
 
-storage_path = "../../data/samples_AMPSphere/ampsphere_descriptors.csv"
+storage_path = "../../data/samples_AMPSphere/AMPs_all_preprocessed.csv"
 
 # load the ampsphere samples
-ampsphere_samples = pd.read_csv("../../data/samples_AMPSphere/AMPs_experimentally_verified.csv")
+ampsphere_samples = pd.read_csv("../../data/samples_AMPSphere/AMP_all.csv")
 # load the main samples (regression dataset, staphylococcus)
 main_samples = pd.read_csv("../../data/samples_DBAASP/reg_staphylococcus_MICs.csv")
 
@@ -25,8 +27,10 @@ for i in range(len(main_samples)):
 
 # list amps_sequences
 amps_sequences = []
+amps_activities = []
 for i in range(len(ampsphere_samples)):
     amps_sequences.append(ampsphere_samples.iloc[i, 1])
+    # amps_activities.append(ampsphere_samples["ACTIVITY"].iloc[i])
 
 # check duplicates
 duplicates = []
@@ -42,6 +46,7 @@ print(duplicates)
 descriptors_list_list = []
 for i in range(len(amps_sequences)):
     sequence = amps_sequences[i]
+    # activity = amps_activities[i]
 
     # create row
     row_dict = {"SEQUENCE": sequence}

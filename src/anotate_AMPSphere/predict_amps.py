@@ -8,16 +8,22 @@ from src.classification.models import RFCModel
 Predict activity of AMPSphere samples using a trained model.
 """
 
-prediction_storage_folder = "../../data/outputs/predictions/ampsphere_100_samples.tsv"
+# change samples to be predicted
+samples_to_predict_path = "../../data/outputs/test_preprocessed_sequences_classfication.csv"
 
+# storage folder
+prediction_storage_folder = "../../data/outputs/predictions/tested_classifiers_for_AMPSphere.tsv"
+
+
+# paths to models
 model_path_01 = "../../data/outputs/dataset01/evaluation_all/RFC/model.pkl"
 model_path_02 = "../../data/outputs/dataset02/evaluation_all/RFC/model.pkl"
 model_path_03 = "../../data/outputs/dataset03/evaluation_all/RFC/model.pkl"
-samples_to_predict_path = "../../data/samples_AMPSphere/ampsphere_descriptors.csv"
 
 # load samples
 samples_to_predict = pd.read_csv(samples_to_predict_path)
 sequences = samples_to_predict['SEQUENCE']
+activities = samples_to_predict['ACTIVITY']
 samples_to_predict = samples_to_predict.drop(columns=['SEQUENCE'])
 
 # load model - classifier
@@ -40,7 +46,8 @@ predictions_df = pd.DataFrame({
     'SEQUENCE': sequences,
     'PREDICTION_01': predictions01[:,1],
     'PREDICTION_02': predictions02[:,1],
-    'PREDICTION_03': predictions03[:,1]
+    'PREDICTION_03': predictions03[:,1],
+    'ACTIVITY': activities
 })
 
 # # store predictions

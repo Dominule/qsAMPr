@@ -14,6 +14,7 @@ from sklearn.svm import SVC
 from src.classification.plot_model import draw_roc_curves, draw_precision_recall, draw_confusion_matrix, draw_cv_plot, \
     draw_cv_plots
 from src.skeleton import PeptideModel
+from src.classification.plot_features import draw_features
 
 """
 Classification models based on skeleton
@@ -73,7 +74,8 @@ class MPCModel(PeptideModel):
             'solver': ['adam'],  # 'sgd', 'lbfgs' slower
             'alpha': [0.0001, 0.001, 0.01],  # regularization parameter, maybe add 0.1
             # 'batch_size': [32, 64],     # try 128
-            # 'learning_rate': ['adaptive', 'constant'],
+            'learning_rate': ['adaptive', 'constant'],
+            'learning_rate_init': [0.001, 0.01, 0.1],
             'early_stopping': [True]
         }
 
@@ -146,7 +148,8 @@ class NormalizedMPCModel(PeptideModel):
             'mlp__solver': ['adam'],  # 'sgd', 'lbfgs' slower
             'mlp__alpha': [0.0001, 0.001, 0.01],  # regularization parameter, maybe add 0.1
             # 'batch_size': [32, 64],     # try 128
-            # 'learning_rate': ['adaptive', 'constant'],
+            'mlp__learning_rate': ['adaptive', 'constant'],
+            'mlp__learning_rate_init': [0.001, 0.01, 0.1],
             'mlp__early_stopping': [True]
         }
 
@@ -166,6 +169,8 @@ def evaluate_model(model: PeptideModel, sequences: List[str], targets: List[floa
     file_model = folder / "model.pkl"
     draw_cv_plot(model.grid_search.cv_results_, folder)
     draw_confusion_matrix(model.model, sequences, targets, folder)
+    draw_features()
+
     predictions = model.predict(sequences)
     folder.mkdir(exist_ok=True)
     with open(file_model, 'wb') as file:
