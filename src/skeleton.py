@@ -12,7 +12,6 @@ class PeptideModel(ABC):
     def __init__(self):
         self.model = None
 
-        # TODO - scoring for regression!
         if (self.get_mode() == 'classification'):
             self.grid_search = GridSearchCV(self.get_model(),
                                             self.get_hyperparam_space(),

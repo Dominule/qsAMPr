@@ -25,4 +25,3 @@ with open(model_path_02, 'rb') as file:
 
 
 # Use the loaded model to make predictions on new data
-# predictions = loaded_classifier.predict(...)

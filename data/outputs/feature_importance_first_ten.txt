@@ -1,0 +1,45 @@
+Feature importance		Model 01
+
+     Feature  Importance
+22        F5    0.017542
+46     PRIN3    0.017320
+5    BLOSUM1    0.017014
+44     PRIN1    0.014913
+87     VHSE5    0.014297
+101       Z5    0.014042
+31       KF8    0.013674
+41        E5    0.013618
+13   BLOSUM9    0.013480
+83     VHSE1    0.013370
+
+
+
+Feature importance		Model 02
+
+     Feature  Importance
+75    SVGER9    0.050623
+87     VHSE5    0.046699
+80        T3    0.042385
+63       ST5    0.040420
+30       KF7    0.038757
+40        E4    0.036346
+100       Z4    0.034157
+17       PP3    0.031814
+71    SVGER5    0.030685
+49   ProtFP3    0.030492
+
+
+
+Feature importance		Model 03
+
+    Feature  Importance
+72   SVGER6    0.048590
+29      KF6    0.027509
+51  ProtFP5    0.024933
+40       E4    0.022917
+99       Z3    0.022188
+63      ST5    0.019897
+71   SVGER5    0.018277
+76  SVGER10    0.018204
+75   SVGER9    0.017479
+28      KF5    0.015848
