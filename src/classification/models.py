@@ -14,7 +14,6 @@ from sklearn.svm import SVC
 from src.classification.plot_model import draw_roc_curves, draw_precision_recall, draw_confusion_matrix, draw_cv_plot, \
     draw_cv_plots
 from src.skeleton import PeptideModel
-from src.classification.plot_features import draw_features
 
 """
 Classification models based on skeleton
@@ -169,7 +168,6 @@ def evaluate_model(model: PeptideModel, sequences: List[str], targets: List[floa
     file_model = folder / "model.pkl"
     draw_cv_plot(model.grid_search.cv_results_, folder)
     draw_confusion_matrix(model.model, sequences, targets, folder)
-    draw_features()
 
     predictions = model.predict(sequences)
     folder.mkdir(exist_ok=True)

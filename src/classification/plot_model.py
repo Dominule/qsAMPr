@@ -49,8 +49,11 @@ def draw_roc_curves(models, x_test, y_test, folder: Path):
     file = folder / "roc_curves.png"
 
     ax = plt.gca()
+    names = ["SVC", "RFC", "NBC", "MLPC"]
+    i = 0
     for model in models:
-        RocCurveDisplay.from_estimator(model, x_test, y_test, ax=ax)
+        RocCurveDisplay.from_estimator(model, x_test, y_test, ax=ax, name=names[i])
+        i = i+1
     ax.plot([0, 1], [0, 1], transform=ax.transAxes)
     ax.set_ylim([0, 1])
     plt.title('ROC curves of all models')
@@ -63,8 +66,11 @@ def draw_precision_recall(models, x_test, y_test, folder: Path):
     file = folder / "precision_recall_curves.png"
 
     ax = plt.gca()
+    names = ["SVC", "RFC", "NBC", "MLPC"]
+    i = 0
     for model in models:
-        PrecisionRecallDisplay.from_estimator(model, x_test, y_test, ax=ax)
+        PrecisionRecallDisplay.from_estimator(model, x_test, y_test, ax=ax, name=names[i])
+        i = i+1
     ax.set_ylim([0, 1])
     plt.title('Precision-recall curves of all models')
     plt.savefig(file)
