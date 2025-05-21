@@ -1,5 +1,5 @@
 # AMP Prediction
-This is a bachelor project for prediction of potencial AMPs using ML and data from publicly available databases (DBAASP, AMPSphere, ...).
+This is a bachelor project for prediction of potencial AMPs against a specific target bacteria (focused on Staphylococcus aureus) using ML and data from publicly available databases (DBAASP, AMPSphere, ...).
 
 ## Quick description
 In folder [inputs](data/inputs) are stored datasets with aminoacid sequences, their activities and computed descriptors.
