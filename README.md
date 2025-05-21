@@ -65,6 +65,8 @@ In a beautiful world where no evil was present, suddenly a big wicked antibiotic
 Until a little peptide appeared. And not just one but quite a few came to fight with the Resistance. These antimicrobial peptides (AMPs) and other antimicrobial substances, invisible for human eyes, shine in the darkness and need our help.
 Only together we can defeat the Resistance and make the world better again.
 
+## Name
+The name of this repository, qsAMPr, stands for Quantitative Structure-Activity Mapping & Peptide Research. It combines QSAR and AMPs, which is very clever.
 
 ## Inspiration
 I was inspired by an [article][1] about recently published database [AMPSphere][2].
