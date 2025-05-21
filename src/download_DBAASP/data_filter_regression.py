@@ -6,8 +6,8 @@ Filter json raw data to get only the exact value of the MIC,
 store the results in csv
 """
 
-path_source = "../../data/samples_DBAASP/raw_data_staphylococcus_from_DBAASP.json"  # path to json file
-path_store = "../../data/samples_DBAASP/reg_staphylococcus_MICs.csv"  # path to store peptides
+path_source = "../../data/inputs/samples_DBAASP/raw_data_staphylococcus_from_DBAASP.json"  # path to json file
+path_store = "../../data/inputs/samples_DBAASP/reg_staphylococcus_MICs.csv"  # path to store peptides
 
 
 bacteria = "Staphylococcus aureus"      # target bacteria

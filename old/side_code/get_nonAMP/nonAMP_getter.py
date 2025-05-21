@@ -2,7 +2,7 @@ import pandas as pd
 
 # read fasta sequences to list
 sequences = []
-with open("../../../data/samples_amPEPpy/nonAMPs_amPEPpy.fasta") as f:
+with open("../../../data/inputs/samples_amPEPpy/nonAMPs_amPEPpy.fasta") as f:
     for line in f:
         if line.startswith('>'):
             continue

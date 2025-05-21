@@ -6,7 +6,7 @@ import peptides
 Create one positive dataset with mycobacterium tuberculosis active peptides from AntiTbPred article
 """
 
-path_source = "../../data/samples_AntiTbPred/positive_tb.csv"
+path_source = "../../data/inputs/samples_AntiTbPred/positive_tb.csv"
 path_store = "../../data/inputs/descriptors_positive_tuberculosis.csv"
 
 

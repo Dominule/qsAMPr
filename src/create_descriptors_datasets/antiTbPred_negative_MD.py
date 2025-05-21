@@ -7,7 +7,7 @@ Create main negative dataset (MD) with mycobacterium tuberculosis inactive(?) pe
 (antimicrobial, generated from DBAASP)
 """
 
-path_source = "../../data/samples_AntiTbPred/negative_antibacterial_DBAASP.csv"
+path_source = "../../data/inputs/samples_AntiTbPred/negative_antibacterial_DBAASP.csv"
 path_store = "../../data/inputs/descriptors_negative_tuberculosis_MD.csv"
 
 

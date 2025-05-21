@@ -4,7 +4,7 @@ import csv
 AMPSphere --> fasta for exploration analysis
 """
 
-input_file = "../../data/samples_AMPSphere/AMP_peptides_100.csv"
+input_file = "../../data/inputs/samples_AMPSphere/AMP_peptides_100.csv"
 output_file = "../data/samples_AMPSphere/sequences_AMPSphere.fasta"
 
 

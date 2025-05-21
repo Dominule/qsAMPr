@@ -7,7 +7,7 @@ Create negative dataset (RD) with mycobacterium tuberculosis inactive peptides f
 (random peptides generated from SwissProt)
 """
 
-path_source = "../../data/samples_AntiTbPred/negative_random_SwissProt.csv"
+path_source = "../../data/inputs/samples_AntiTbPred/negative_random_SwissProt.csv"
 path_store = "../../data/inputs/descriptors_negative_tuberculosis_RD.csv"
 
 

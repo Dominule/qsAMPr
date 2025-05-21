@@ -7,7 +7,7 @@ Get positive or negative ids from DBAASP data
 
 def get_positive_ids():
     positive_ids = []
-    with open("../../data/samples_DBAASP/raw_dbaasp_staphylococcus_without_modifications.csv") as file:
+    with open("../../data/inputs/samples_DBAASP/raw_dbaasp_staphylococcus_without_modifications.csv") as file:
         reader = csv.reader(file, delimiter=",")
         for row in reader:
             if row[0] == "ID":

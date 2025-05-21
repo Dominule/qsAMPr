@@ -16,7 +16,7 @@ model_path_02 = "../../data/outputs/dataset02/evaluation_all/RFC/model.pkl"
 model_path_03 = "../../data/outputs/dataset03/evaluation_all/RFC/model.pkl"
 
 # path to samples
-samples_path = "../../data/samples_AMPSphere/AMP_all.csv"
+samples_path = "../../data/inputs/samples_AMPSphere/AMP_all.csv"
 
 # set thresholds
 thr01 = 0.49

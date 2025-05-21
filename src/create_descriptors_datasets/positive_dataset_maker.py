@@ -5,7 +5,7 @@ import peptides
 Create one positive dataset with staphylococcus active peptides (DBAASP)
 """
 
-path_source = "../../data/samples_DBAASP/peptides_staphylococcus_active.csv"
+path_source = "../../data/inputs/samples_DBAASP/peptides_staphylococcus_active.csv"
 path_store = "../../data/inputs/descriptors_positive_staphylococcus.csv"
 
 

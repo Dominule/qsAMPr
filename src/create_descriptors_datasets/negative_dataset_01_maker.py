@@ -5,8 +5,8 @@ import peptides
 Create negative dataset -01- staphylococcus inactive + gram negative bacteria active peptides (DBAASP)
 """
 
-path_source_fir = "../../data/samples_DBAASP/peptides_staphylococcus_inactive.csv"
-path_source_sec = "../../data/samples_DBAASP/peptides_gram_negative_bacteria_active.csv"
+path_source_fir = "../../data/inputs/samples_DBAASP/peptides_staphylococcus_inactive.csv"
+path_source_sec = "../../data/inputs/samples_DBAASP/peptides_gram_negative_bacteria_active.csv"
 path_store = "../../data/inputs/descriptors_negative_01_dataset.csv"
 negatives_to_keep = 224     # number of negative sequences from gram negative to keep
 

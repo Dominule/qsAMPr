@@ -6,9 +6,9 @@ divide between active and inactive peptides,
 store the results in csv
 """
 
-path_source = "../../data/samples_DBAASP/raw_data_staphylococcus_from_DBAASP.json"   # path to json file
-path_active = "../../data/samples_DBAASP/peptides_staphylococcus_active.csv"        # path to store active peptides
-path_inactive = "../../data/samples_DBAASP/peptides_staphylococcus_inactive.csv"    # path to store inactive peptides
+path_source = "../../data/inputs/samples_DBAASP/raw_data_staphylococcus_from_DBAASP.json"  # path to json file
+path_active = "../../data/inputs/samples_DBAASP/peptides_staphylococcus_active.csv"  # path to store active peptides
+path_inactive = "../../data/inputs/samples_DBAASP/peptides_staphylococcus_inactive.csv"  # path to store inactive peptides
 #path_gram_negative = "../../data/samples_DBAASP/peptides_gram_negative_bacteria_active.csv"
 bacteria = "Staphylococcus aureus"      # target bacteria
 method = "MIC"              # Minimal Inhibitory Concentration

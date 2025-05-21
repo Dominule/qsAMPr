@@ -5,8 +5,8 @@ import peptides
 Create negative dataset -02- random real sequences (UniProt from AntiTbPred)
 """
 
-path_source_fir = "../../data/samples_negative_SwissProt/negative_peptides"
-path_source_sec = "../../data/samples_amPEPpy/peptides_nonAMPs_amPEPpy.csv"
+path_source_fir = "../../data/inputs/samples_negative_SwissProt/negative_peptides"
+path_source_sec = "../../data/inputs/samples_amPEPpy/peptides_nonAMPs_amPEPpy.csv"
 path_store = "../../data/inputs/descriptors_negative_02_dataset.csv"
 new_activity = 10000
 number_to_keep = 218

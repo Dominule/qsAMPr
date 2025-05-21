@@ -6,12 +6,12 @@ Store ampsphere samples in a separate file.
 import pandas as pd
 import peptides
 
-storage_path = "../../data/samples_AMPSphere/AMPs_all_preprocessed.csv"
+storage_path = "../../data/inputs/samples_AMPSphere/AMPs_all_preprocessed.csv"
 
 # load the ampsphere samples
-ampsphere_samples = pd.read_csv("../../data/samples_AMPSphere/AMP_all.csv", delimiter='\t')
+ampsphere_samples = pd.read_csv("../../data/inputs/samples_AMPSphere/AMP_all.csv", delimiter='\t')
 # load the main samples (regression dataset, staphylococcus)
-main_samples = pd.read_csv("../../data/samples_DBAASP/reg_staphylococcus_MICs.csv")
+main_samples = pd.read_csv("../../data/inputs/samples_DBAASP/reg_staphylococcus_MICs.csv")
 
 # print("Main samples:")
 # print(ampsphere_samples.shape)

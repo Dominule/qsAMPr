@@ -61,6 +61,18 @@ def draw_roc_curves(models, x_test, y_test, folder: Path):
     plt.clf()
 
 
+def draw_roc_curve(model, x_test, y_test, folder: Path):
+    file = folder / "roc_curve.png"
+
+    ax = plt.gca()
+    RocCurveDisplay.from_estimator(model, x_test, y_test, ax=ax, name="Random Forest Classifier")
+    ax.plot([0, 1], [0, 1], transform=ax.transAxes)
+    ax.set_ylim([0, 1])
+    plt.title('ROC curve')
+    plt.savefig(file)
+    plt.clf()
+
+
 # PrecisionRecallDisplay
 def draw_precision_recall(models, x_test, y_test, folder: Path):
     file = folder / "precision_recall_curves.png"

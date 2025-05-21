@@ -10,7 +10,7 @@ Predict activity of AMPSphere samples using a trained model.
 model_path_01 = "../../data/outputs/dataset01/evaluation_all/RFC/model.pkl"
 model_path_02 = "../../data/outputs/dataset02/evaluation_all/RFC/model.pkl"
 model_path_03 = "../../data/outputs/dataset03/evaluation_all/RFC/model.pkl"
-samples_to_predict_path = "../../data/samples_AMPSphere/AMPs_experimentally_verified.csv"
+samples_to_predict_path = "../../data/inputs/samples_AMPSphere/AMPs_experimentally_verified.csv"
 
 # load samples
 samples_to_predict = pd.read_csv(samples_to_predict_path)

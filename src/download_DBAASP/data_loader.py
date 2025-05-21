@@ -7,7 +7,7 @@ from ids_getter import get_positive_ids, get_raw, get_gram_negative_ids
 Download data to json from DBAASP
 """
 
-storage_path = '../../data/samples_DBAASP/raw_data_gram_negative_from_DBAASP.json'
+storage_path = '../../data/inputs/samples_DBAASP/raw_data_gram_negative_from_DBAASP.json'
 amp_id_list = get_gram_negative_ids()
 
 
